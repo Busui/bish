@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {% block head %}
+            <!-- Required meta tags -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+            {% block styles %}
+                <!-- Bootstrap CSS -->
+                {{ bootstrap.load_css() }}
+                <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
+            {% endblock %}
+
+            <title>
+                {% block title %}
+                {% if title %}{{ title }} - 智能中医系统{% else %}欢迎来访智能中医系统{% endif %}
+                {% endblock %}
+            </title>
+        {% endblock %}
+    </head>
+    <body>
+        <!-- Your page content -->
+        {% block header %}{% endblock %}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show mb-0" role="alert">
+                <strong>{{ message }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+        {% endif %}
+      {% endwith %}
+        {% block content %}{% endblock %}
+
+        {% block scripts %}
+            <!-- Optional JavaScript -->
+            {{ bootstrap.load_js() }}
+            {{ moment.include_moment() }}
+            {{ moment.lang("zh-cn") }}
+            <script>
+                window.setTimeout(function(){
+                    $('[data-dismiss="alert"]').alert('close');
+                },3000);
+                function set_message_count(n) {
+                    $('#message_count').text(n);
+                    $('#message_count').css('visibility', n ? 'visible' : 'hidden');
+                    $('#message_count').css('background-color', n ? '#FFC75F' : '#000');
+                }
+          </script>
+        {% endblock %}
+    </body>
+</html>

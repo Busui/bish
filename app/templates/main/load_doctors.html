@@ -1,0 +1,13 @@
+{% extends 'main/index.html' %}
+{% block content %}
+<div class="container mt-4">
+<div class="list-group">
+    {% for doctor in doctors %}
+    <button type="button" class="list-group-item list-group-item-action">
+      <img src="{{ url_for('static', filename=doctor.avatar)}}" alt="" style="width: 80px; height: 80px;">
+      <span class="pl-3 custom-font-size">{{ doctor.username }}</span>
+    </button>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

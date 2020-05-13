@@ -1,0 +1,213 @@
+{% extends 'main/index.html' %}
+{% block content %}
+<!-- <div class="container border mt-2">
+    <div class="d-flex justify-content-center mt-4"> 
+        <figure class="figure">
+            <img src="{{ avatar_url }}" class="figure-img rounded" style="width: 200px; height: 200px;" alt="...">
+            <figcaption class="figure-caption">A caption for the above image.</figcaption>
+        </figure>
+    </div>
+    <div class="d-flex justify-content-center">
+        <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">神经外科</span>
+        <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">西医</span>
+        <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">本科</span>
+        <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">副教授</span>
+        <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">神经外科</span>
+        <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">西医</span>
+        <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">本科</span>
+        <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">副教授</span>
+        <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">神经外科</span>
+        <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">西医</span>
+        <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">本科</span>
+        <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">副教授</span>
+    </div>
+    
+</div> -->
+
+<div class="container border border-warning mt-2 p-2 bg-light">
+    <div class="row m-y-2">
+        <div class="col-lg-8 push-lg-4">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">个人资料</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">编辑</a>
+                </li>
+            </ul>
+            <div class="tab-content p-b-3 mt-2">
+                <div class="tab-pane active" id="profile">
+                    <h4 class="ml-2 p-1">姓名：<span class="border-bottom">{{ current_user.username }}</span></h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="ml-2 p-1">电话：<span class="border-bottom">{{ current_user.phone_number }}</span></h4>
+                            <h5 class="ml-2 p-1">邮箱：<span class="border-bottom">{{ current_user.email }}</span></h4>
+                            <h5 class="ml-2 p-1">性别：<span class="border-bottom">{% if current_user.male %}男{% else %}女{% endif %}</span></h4>
+                            <h5 class="ml-2 p-1">上次登录：<span class="border-bottom">{{ current_user.last_seen }}</span></h4>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>技能树</h6>
+                            <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">神经外科</span>
+                            <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">西医</span>
+                            <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">本科</span>
+                            <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">副教授</span>
+                            <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">神经外科</span>
+                            <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">西医</span>
+                            <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">本科</span>
+                            <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">副教授</span>
+                            <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">神经外科</span>
+                            <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">西医</span>
+                            <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">本科</span>
+                            <span class="m-1 font-weight-bold p-2 badge badge-pill badge-warning">副教授</span>
+                        </div>
+                        <div class="col-md-12 mt-2 ml-2">
+                            <h4 class="m-t-2"><span class="fa fa-clock-o ion-clock pull-xs-right"></span>座右铭</h4>
+                            <p>该医生很赖，没有留下任何座右铭</p>
+                        </div>
+
+                        <div class="col-md-12 mt-2 ml-2">
+                            <h4 class="m-t-2"><span class="fa fa-clock-o ion-clock pull-xs-right"></span>履历</h4>
+                            <table class="table table-hover table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            2000～2004就读于<strong>广东医科大学</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            2005年获取某某医院十大杰出青年医生称号
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Kensington</strong> deleted MyBoard3 in
+                                            <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Skell</strong> deleted his post Look at Why this is.. in
+                                            <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/row-->
+                </div>
+                <div class="tab-pane" id="edit">
+                    <h4 class="m-y-2">Edit Profile</h4>
+                    <form role="form">
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">First name</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="Jane">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="Bishop">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="email" value="email@gmail.com">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Company</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Website</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="url" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="" placeholder="Street">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-6">
+                                <input class="form-control" type="text" value="" placeholder="City">
+                            </div>
+                            <div class="col-lg-3">
+                                <input class="form-control" type="text" value="" placeholder="State">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Time Zone</label>
+                            <div class="col-lg-9">
+                                <select id="user_time_zone" class="form-control" size="0">
+                                    <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                                    <option value="Alaska">(GMT-09:00) Alaska</option>
+                                    <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp;
+                                        Canada)</option>
+                                    <option value="Arizona">(GMT-07:00) Arizona</option>
+                                    <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp;
+                                        Canada)</option>
+                                    <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00)
+                                        Central Time (US &amp; Canada)</option>
+                                    <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp;
+                                        Canada)</option>
+                                    <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Username</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="janeuser">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Password</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="password" value="11111122333">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="password" value="11111122333">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-9">
+                                <input type="reset" class="btn btn-secondary" value="Cancel">
+                                <input type="button" class="btn btn-primary" value="Save Changes">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 pull-lg-8 text-xs-center mt-5">
+            <img src="{{ avatar_url }}" class="m-x-auto img-fluid img-circle" style="height: 150px; width: 150px;" alt="avatar">
+            <h6 class="m-t-2">更改头像</h6>
+            <label class="custom-file">
+                <input type="file" id="file" class="custom-file-input">
+                <span class="custom-file-control">选择头像</span>
+            </label>
+        </div>
+    </div>
+</div>
+{% endblock %}

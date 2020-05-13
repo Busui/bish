@@ -1,0 +1,12 @@
+{% extends 'main/index.html' %}
+{% block content %}
+<div class="container mt-5">
+    <ul>
+    {% for patient in patients %}
+        <li>{{ patient.username }}</li>
+    {% endfor %}   
+    </ul>
+    <a class="btn btn-primary" href="{{ url_for('main.search_user')}}" role="button">Link</a>
+</div>
+
+{% endblock content %}

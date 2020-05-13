@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% if current_user.is_authenticated %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">中医系统</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      {% if current_user.is_doctor %}
+      <li class="nav-item {%- if request.path == "/home" %}active{% endif %}">
+        <a class="nav-link" href="#">我的病人<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == "/patient_recorded" %}active{% endif %}" href="{{ url_for('main.patient_recorded') }}">病人信息录入</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          问诊
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">体质-儿童</a>
+          <a class="dropdown-item" href="#">慢性病-高血脂</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">中医内科-脏腑辩证</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          望诊
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">拍摄照片</a>
+          <a class="dropdown-item" href="#">舌象诊断</a>
+          <a class="dropdown-item" href="#">面象诊断</a>
+          <a class="dropdown-item" href="#">舌下诊断</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">诊断结果</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          建议和养生方案
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">体质养生方案</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">中医内科诊断建议</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">打印</a>
+      </li>
+      {% endif %}
+      <li class="nav-item">
+        {% if current_user.is_doctor %}
+        <a class="nav-link {% if request.path == "/doctor_profile" %}active{% endif %}" href="{{ url_for('main.doctor_profile') }}">个人资料</a>
+        {% else %}
+        <a class="nav-link {% if request.path == "/user_profile" %}active{% endif %}" href="{{ url_for('main.user_profile') }}">个人资料</a>
+        {% endif %}
+      </li>
+      <li class="nav-item">
+        {% if current_user.is_doctor %}
+        <div></div>
+        {% else %}
+        <a class="nav-link {% if request.path == "/load_doctors" %}active{% endif %}" href="{{ url_for('main.load_doctors') }}">医生列表</a>
+        {% endif %}
+      </li>
+      {% if current_user.is_admin %}
+      <li class="nav-item">
+        <a href="{{ url_for('admin.index')}}" class="nav-link btn btn-outline-success my-sm-0" tabindex="-1"
+          role="button">管理系统</a>
+      </li>
+      {% endif %}
+
+      <li class="nav-item">
+        <a href="{{ url_for('auth.logout') }}" class="nav-link btn btn-outline-danger mx-3 my-sm-0" tabindex="-1"
+          role="button" aria-disabled="true">注销</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+{% else %}
+<div class="index-main container shadow rounded">
+  <div class="row align-items-center h-50 mt-5">
+    <div class="col-12 text-center">
+      <span class="logo-font-size">智能中医诊断系统</span>
+    </div>
+    <div class="row justify-content-around w-100 text-center">
+      <div class="col-3">
+        <a href="{{ url_for('auth.login') }}" class="btn btn-outline-dark" role="button" aria-pressed="true">login</a>
+      </div>
+      <div class="col-3">
+        <a href="{{ url_for('auth.register') }}" class="btn btn-outline-dark" role="button"
+          aria-pressed="true">register</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock header %}
